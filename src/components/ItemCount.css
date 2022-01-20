@@ -1,0 +1,26 @@
+.itemCount--Container{
+    height: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: flex-end;
+    background-color: black;
+}
+
+
+.contadorContainer{
+display: flex;
+justify-content: space-around;
+flex-direction:column;
+color: rgb(235, 218, 122);
+font-size: 30px;
+
+}
+.button{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin: 10px;
+   
+}

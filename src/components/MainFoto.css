@@ -1,0 +1,26 @@
+.fondoNegroSobreFoto{
+    background-image: url("../images/jaguarete-biocentro-iguazu1.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    position:sticky;
+    width: 100%;
+    
+}
+.mainFoto{
+    height: 600px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.57);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+.desataInstintoTitulo{
+display: flex;
+justify-content: center;
+align-content: center;
+padding-top: 220px;
+ font-size: 50px;
+ color: rgb(235, 218, 122);;
+}

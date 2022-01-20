@@ -1,0 +1,28 @@
+
+.navBar--Container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+}
+.navLogo{
+    width:120px;
+   padding-left: 50px;
+   
+}
+.navBar{
+    display: flex;
+    justify-content: flex-end;
+    width: 590px;
+    padding-left: 530px;
+    justify-content: space-between;
+    font-size: 21px;
+    
+    
+}
+.navBar--Word{
+    text-decoration: none;
+    display: flex;
+    color: rgb(235, 218, 122);
+    
+}
