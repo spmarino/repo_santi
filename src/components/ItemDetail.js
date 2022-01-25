@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 import {contexto} from "./CartContext"
-
+import { toast } from 'react-toastify'
 
 function ItemDetail({product}) {
     
@@ -12,10 +12,14 @@ function ItemDetail({product}) {
     const {agregarProducto} = useContext (contexto)
    
     const onAdd =(contador) =>{
+
+        setCompra ({
+            ...product,
+            contador,
+            
+        })
         agregarProducto(product, contador)
-        
         setMostrarBotonCompra (true);
-       
     }
     return (
         <div className='itemDetailContainer'>
@@ -33,7 +37,7 @@ function ItemDetail({product}) {
                     <Link to= "/cart" > <button>Finalizar Compra</button></Link>
                     </div>
                     :
-                    <div><ItemCount  onAdd={onAdd} stock = {stock} initial= {initial}/></div>
+                    <div><ItemCount  onAdd={onAdd} stock = {stock} initial={1}/></div>
                 }
             </div>
             

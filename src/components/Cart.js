@@ -6,15 +6,15 @@ import CartItem from "./CartItem"
 function Cart() {
 
    const {carrito , precio_total} = useContext(contexto)
-   const {limpiarCarrito } = useContext(contexto)
+   const {limpiarCarrito} = useContext (contexto)
     
 
     if (carrito.length > 0){
         return (<div>
                     <h1>Carrito de compras</h1>
-                {carrito.map((producto) => <CartItem key={producto.product.id} producto ={producto.product} contador={producto.contador}/>)}
-                {/*<p>Monto a Pagar: ${precio_total}</p>*/}
-                <button onClick={limpiarCarrito}>Vaciar Carrito</button>
+                {carrito.map((producto) => <CartItem key={producto.product.id} producto ={producto.product} contador = {producto.contador}/>)}
+                <button onClick = {limpiarCarrito}>Vaciar Carrito</button>
+                <p>{precio_total()}</p>
                    
                 </div>)
     }else{

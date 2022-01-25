@@ -1,51 +1,55 @@
-import { createContext, useState } from "react";
-import { toast } from "react-toastify";
+import { createContext, useState } from 'react'; 
+import { toast } from 'react-toastify';
 
-export const contexto = createContext();
 
-const { Provider } = contexto;
+ export const contexto =createContext ()
 
-const CartProvider = ({ children }) => {
-  const [carrito, setCarrito] = useState([]);
-  const [precio_total, setPrecio_total] = useState(0);
-  const [cantidad_total, setCantidad_total] = useState(0);
+const {Provider} = contexto
 
-  const agregarProducto = (product, contador) => {
-    const index = carrito.findIndex((item) => item.product.id === product.id);
+const CartProvider = ({children}) => {
+    const [carrito, setCarrito] = useState ([])
 
-    if (index > -1) {
-      toast.error(`Este Producto ya se encuentra en el carrito`);
-    } else {
+    const agregarProducto = (product, contador) => {
 
-      setCarrito([...carrito, { product, contador }]);
-  toast.success(`Se agrego el produto al Carrito`)
+        const index = carrito.findIndex((item) => item.product.id === product.id);
+
+        if(index > -1){
+            toast.error(`Este producto ya se encuentra en el carro`)
+        }else{
+        setCarrito([...carrito, {product, contador}])
+        toast.success(`Se agrego el producto correctamente`)
+    }}
+    
+    const eliminarProducto = (id) => {
+        const items = carrito.filter ((product) => product.product.id !== id)
+        setCarrito(items)
     }
-  };
+    const limpiarCarrito = () => {
+        setCarrito([])
+    }
 
-  const eliminarProducto = (id) => {
-    const items = carrito.filter((producto) => producto.product.id !== id);
+    const contador_carrito = () => {
+        return carrito.reduce((acum, i) => acum + i.contador, 0);
+      };
+    
+      const precio_total = () => {
+        return carrito.reduce((acum, i) => acum + i.contador * i.product.precio, 0);
+      };
 
-    setCarrito(items);
-  };
-  const limpiarCarrito = () => {
-    setCarrito([]);
-  };
-  const isInCart = () => {};
 
-  return (
-    <Provider
-      value={{
-        carrito,
-        precio_total,
-        cantidad_total,
-        agregarProducto,
-        eliminarProducto,
-        limpiarCarrito,
-      }}
-    >
-      {children}
-    </Provider>
-  );
-};
+    return (
+        <Provider value = {{ 
+            carrito,
+            precio_total,
+            agregarProducto,
+            eliminarProducto,
+            limpiarCarrito,
+            precio_total,
+            contador_carrito}}>
+            {children}
+        </Provider>
+    )
+    
+}
 
-export default CartProvider;
+export default CartProvider
