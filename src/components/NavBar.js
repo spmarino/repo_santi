@@ -7,7 +7,7 @@ import { contexto } from "./CartContext";
 
 function NavBar () {
 
-   const {contador_carrito} = useContext (contexto)
+   const {contador_carrito,carrito} = useContext(contexto)
 
 
     return(
@@ -23,7 +23,7 @@ function NavBar () {
                 <Link className="navBar--Word" to={"/category/gorras"}>Gorras</Link>
                 <Link className="navBar--Word" to={"/category/buzos"}>Buzos</Link>
                 
-                <Link className="navBar--Word" to={"/cart"}> <ShoppingCartOutlinedIcon/> <p style={{color:'white'}}>{contador_carrito()}</p></Link>
+                <Link className="navBar--Word" to={"/cart"}> <ShoppingCartOutlinedIcon/><p style={{color:'white'}}>{(carrito.length !== 0) ? contador_carrito() : 0 }</p></Link>
                 
             </nav>
         </div>

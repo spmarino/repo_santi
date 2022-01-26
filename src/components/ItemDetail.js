@@ -4,23 +4,25 @@ import ItemCount from './ItemCount'
 import {contexto} from "./CartContext"
 import { toast } from 'react-toastify'
 
-function ItemDetail({product}) {
+function ItemDetail({product, id}) {
     
     const [mostrarBotonCompra, setMostrarBotonCompra] = useState(false)
-    const [compra, setCompra] = useState ({})
+    const [cantidad, setCantidad] = useState(0)
     const {nombre , precio , foto,  stock , initial} = product
     const {agregarProducto} = useContext (contexto)
    
-    const onAdd =(contador) =>{
+const item = {
+    producto: product,
+    id: id,
+    cantidad: +cantidad
+}
 
-        setCompra ({
-            ...product,
-            contador,
-            
-        })
-        agregarProducto(product, contador)
-        setMostrarBotonCompra (true);
+    const onAdd = (contador) =>{
+
+    setCantidad(contador)
+        //setMostrarBotonCompra (true);
     }
+
     return (
         <div className='itemDetailContainer'>
             <p>{nombre}</p>
@@ -32,13 +34,16 @@ function ItemDetail({product}) {
                     ?
                     <div>
                         <div>
-                          <p><b>Cantidad Seleccionada: {compra.contador} </b></p>
+                     
                         </div>
                     <Link to= "/cart" > <button>Finalizar Compra</button></Link>
                     </div>
                     :
                     <div><ItemCount  onAdd={onAdd} stock = {stock} initial={1}/></div>
+
                 }
+                <button onClick={() => agregarProducto(item)}>Agregar al Carrito</button>
+                {console.log(cantidad)}
             </div>
             
         </div>
