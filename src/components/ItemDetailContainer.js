@@ -10,15 +10,18 @@ function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { id } = useParams();
+  const {id} = useParams();
 
   useEffect(() => {
     const coleccionProductos = collection(db, "productos");
+
     const item = doc(coleccionProductos, id);
+    
     const pedido = getDoc(item);
 
     pedido
       .then((resultado) => {
+
         const producto = resultado.data();
 
         setProduct(producto);
@@ -39,7 +42,7 @@ function ItemDetailContainer() {
   if (loading === false) {
     return (
       <>
-        <ItemDetail key={id} product={product} id ={id} />
+        <ItemDetail key={id} product={product} id ={id}/>
         {console.log(product)}
       </>
     );

@@ -10,29 +10,40 @@ function ItemList() {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState([true]);
 
-  const { id } = useParams();
+  const {id} = useParams();
 
   useEffect(() => {
+   
+   
     const coleccionProductos = collection(db, "productos");
 
     const coleccionProds =
       id === "buzos"
-        ? query(coleccionProductos, where("gender", "==", id))
+        ? query(coleccionProductos, where("categoria", "==", id))
         : id === "gorras"
-        ? query(coleccionProductos, where("gender", "==", id))
+        ? query(coleccionProductos, where("categoria", "==", id))
         : coleccionProductos;
 
+
+
+
     const pedido = getDocs(coleccionProds);
+
     pedido
       .then((resultado) => {
+
         const docs = resultado.docs;
+
         const docs_formateado = docs.map((doc) => {
+
           const producto = {
             id: doc.id,
             ...doc.data(),
           }
+
           return producto;
         });
+
         setProductos(docs_formateado);
         setLoading(false);
       })
@@ -50,7 +61,7 @@ function ItemList() {
           <Item key={producto.id} producto={producto} />
         ))
       )}
-      {console.log(productos)}
+
     </div>
   );
 }

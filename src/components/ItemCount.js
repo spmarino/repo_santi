@@ -6,6 +6,7 @@ const ItemCount = ({stock , initial, onAdd }) => {
     const [contador, setContador] = useState(1)
 
     useEffect(() =>{
+        
         onAdd(contador)
     })
     const aumentarContador = () => {

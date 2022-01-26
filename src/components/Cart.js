@@ -12,7 +12,7 @@ function Cart() {
     if (carrito.length > 0){
         return (<div>
                     <h1>Carrito de compras</h1>
-                {carrito.map((producto) => <CartItem key={producto.id} id = {producto.id} producto ={producto.producto} cantidad = {producto.cantidad}/>)}
+                {carrito.map((i) => <CartItem key={i.id} id={i.id} producto={i.producto} contador ={i.cantidad}/>)}
                 <button onClick = {limpiarCarrito}>Vaciar Carrito</button>
                 <p>{precio_total()}</p>
                    
@@ -22,7 +22,6 @@ function Cart() {
             <div className="cartContainer">
                  <h1>Carrito de compras</h1>
                     <h2>No hay productos en el carrito</h2>
-                    {console.log(carrito)}
             </div>
         )
     }
